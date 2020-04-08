@@ -5,11 +5,19 @@ module.exports = {
   async store(request, response)  {
     const {email} = request.body;
 
-    const user = await User.find({where: { email }}).exec();
+    const user = await User.findOne({ email });
 
-    const { dependents, name,  image, programs, birth} = await user;
+    const { id, dependents, name,  image, programs, birth} = user;
 
-    return response.json(console.log({user})
-    );
+    return response.json({
+      user: {
+        id,
+        name,
+        image,
+        birth,
+        dependents,
+        programs
+      }
+    });
   }
 };
