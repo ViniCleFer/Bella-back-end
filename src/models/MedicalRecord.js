@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
 const MedicalRecordSchema = new mongoose.Schema({
+  medical: String,
+  especiality: String,
+  image: String,
   problems: [String],
   questions: [String],
   conclusion: String,
-  risk: Number,
+  risk: String,
+  level: Number,
   date: String,
   attendance: String,
   duration: String,
@@ -12,11 +16,7 @@ const MedicalRecordSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  medical: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Medical'
-  },
-  },{
+    },{
     timestamps: true
   }
 );

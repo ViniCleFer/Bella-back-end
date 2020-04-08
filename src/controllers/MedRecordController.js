@@ -12,18 +12,21 @@ module.exports = {
   },
 
   async store(request, response)  {
-  const {problems, risk, date, questions, conclusion, attendance, duration } = request.body;
+  const {filename} = request.file;
+  const {medical, especiality, problems, risk, level, date, questions, conclusion, attendance, duration } = request.body;
   const {user_id} = request.headers;
-  const {medical_id} = request.headers;
 
   const medRecord = await MedicalRecord.create({
     user: user_id,
-    medical: medical_id,
-    questions,
+    medical,
+    especiality,
+    image: filename,
+    questions: questions.split(','),
     conclusion,
-    problems,
+    problems: problems.split(','),
     date,
     risk,
+    level,
     attendance,
     duration
   });

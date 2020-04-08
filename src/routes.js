@@ -4,7 +4,7 @@ const uploadConfig = require('./config/upload');
 
 const UserController = require('./controllers/UserController');
 const MedicalController = require('./controllers/MedicalController');
-//const SessionController = require('./controllers/SessionController');
+const SessionController = require('./controllers/SessionController');
 const DependentController = require('./controllers/DependentController');
 const ProfileController = require('./controllers/ProfileController');
 const ProgramController = require('./controllers/ProgramController');
@@ -15,7 +15,7 @@ const routes = express.Router();
 const upload = multer(uploadConfig);
 
 routes.post('/users', upload.single('image'), UserController.store);
-//routes.post('/sessions', SessionController.store);
+routes.post('/sessions', SessionController.store);
 
 routes.post('/medicals', upload.single('image'), MedicalController.store);
 
@@ -30,7 +30,7 @@ routes.get('/programs/:id', ProgramController.show);
 routes.post('/program/:program_id/:user_id', ProfileController.store);
 routes.get('/program/:user_id', ProfileController.index);
 
-routes.post('/medical_record', MedRecordController.store);
+routes.post('/medical_record', upload.single('image'), MedRecordController.store);
 routes.get('/medical_record/:user_id', MedRecordController.index);
 
 routes.post('/timeline', TimeLineController.store);
