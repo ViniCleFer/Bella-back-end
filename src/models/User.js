@@ -7,6 +7,15 @@ const UserSchema = new mongoose.Schema({
   birth: Date,
   dependents: [String],
   programs: [String]
+},{
+    toJSON: {
+      virtuals: true
+    }
+  }
+);
+
+UserSchema.virtual('image_url').get(function() {
+  return `http://localhost:3333/files/${this.image}`
 });
 
 module.exports = mongoose.model('User', UserSchema);

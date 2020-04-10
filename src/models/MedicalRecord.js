@@ -17,8 +17,15 @@ const MedicalRecordSchema = new mongoose.Schema({
     ref: 'User'
   },
     },{
-    timestamps: true
+    timestamps: true,
+    toJSON: {
+      virtuals: true
+    }
   }
 );
+
+MedicalRecordSchema.virtual('image_url').get(function() {
+  return `http://localhost:3333/files/${this.image}`
+})
 
 module.exports = mongoose.model('MedicalRecord', MedicalRecordSchema);

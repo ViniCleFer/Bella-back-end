@@ -6,6 +6,15 @@ const ProgramSchema = new mongoose.Schema({
   image: String,
   professionals: [String],
   public: String
+},{
+    toJSON: {
+      virtuals: true
+    }
+  }
+);
+
+ProgramSchema.virtual('image_url').get(function() {
+return `http://localhost:3333/files/${this.image}`
 });
 
 module.exports = mongoose.model('Program', ProgramSchema);

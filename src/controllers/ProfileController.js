@@ -1,4 +1,5 @@
 const Subscribe = require('../models/Subscribe');
+const Program = require('../models/Program');
 
 module.exports = {
   async index(request, response) {
@@ -14,12 +15,20 @@ module.exports = {
   async store(request, response)  {
     const {program_id} = request.params
     const {user_id} = request.params;
-  
-    const subscribe = await Subscribe.create({
-      user: user_id,
-      program: program_id,
-    });
+
+    const programs = await Program.findById(program_id);
+
+    const { professionals, name,  image, public, description} = programs;
     
-      return response.json(subscribe);
-    }
+    return response.json({
+      user: user_id,
+      program: {
+        professionals,
+        name,
+        image,
+        public,
+        description
+      }
+    });
+  }
 };
