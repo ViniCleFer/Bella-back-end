@@ -7,9 +7,9 @@ module.exports = {
 
     const programs = await Subscribe.find({
       user: user_id
-    })
-
-    return response.json(programs)
+    });
+    
+    return response.json(programs);
   },
 
   async store(request, response)  {
@@ -19,10 +19,10 @@ module.exports = {
     const programs = await Program.findById(program_id);
 
     const { professionals, name,  image, public, description} = programs;
-    
-    return response.json({
+
+    const subscribe = await Subscribe.create({
       user: user_id,
-      program: {
+      programs: {
         professionals,
         name,
         image,
@@ -30,5 +30,48 @@ module.exports = {
         description
       }
     });
+
+    const { _id} = subscribe;
+    
+    return response.json({
+      subscribe: {
+        id: _id,
+        user: user_id,
+        programs: {
+          professionals,
+          name,
+          image,
+          public,
+          description
+        }
+      }
+    });
   }
 };
+
+/*
+async index(request, response) {
+    const {user_id} = request.params;
+
+    const programs = await Subscribe.find({
+      user: user_id
+    })
+
+    const { id, professionals, name,  image, public, description} = programs;
+
+
+    console.log(programs);
+    
+    return response.json([{
+      subscribe: id,
+      user: user_id,
+      programs: {
+        professionals,
+        name,
+        image,
+        public,
+        description
+      }
+    }]);
+  },
+*/
