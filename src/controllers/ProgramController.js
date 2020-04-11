@@ -25,7 +25,7 @@ module.exports = {
       image: filename,
       description,
       public,
-      professionals: professionals.split(',').map(dependent => dependent.trim()),
+      professionals: professionals.split(',').map(professionals => professionals.trim()),
       name
     })
   
