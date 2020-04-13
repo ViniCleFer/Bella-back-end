@@ -15,7 +15,7 @@ const DependentSchema = new mongoose.Schema({
 });
 
 DependentSchema.virtual('image_url').get(function() {
-  return `http://localhost:3333/files/${this.image}`
+  return `${this.image}`
 })
 
 module.exports = mongoose.model('Dependent', DependentSchema);

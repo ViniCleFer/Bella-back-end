@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const TimeLineSchema = new mongoose.Schema({
-  date: String,
+  date: Date,
   action: [String],
   hour: [String],
   info: [String],

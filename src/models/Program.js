@@ -14,7 +14,7 @@ const ProgramSchema = new mongoose.Schema({
 );
 
 ProgramSchema.virtual('image_url').get(function() {
-return `http://localhost:3333/files/${this.image}`
+return `${this.image}`
 });
 
 module.exports = mongoose.model('Program', ProgramSchema);

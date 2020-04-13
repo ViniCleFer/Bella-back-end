@@ -9,7 +9,7 @@ const MedicalRecordSchema = new mongoose.Schema({
   conclusion: String,
   risk: String,
   level: Number,
-  date: String,
+  date: Date,
   attendance: String,
   duration: String,
   user: {
@@ -25,7 +25,7 @@ const MedicalRecordSchema = new mongoose.Schema({
 );
 
 MedicalRecordSchema.virtual('image_url').get(function() {
-  return `http://localhost:3333/files/${this.image}`
+  return `${this.image}`
 })
 
 module.exports = mongoose.model('MedicalRecord', MedicalRecordSchema);

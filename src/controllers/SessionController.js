@@ -7,13 +7,13 @@ module.exports = {
 
     const user = await User.findOne({ email });
 
-    const { id, dependents, name,  image, programs, birth} = user;
+    const { id, dependents, name,  image_url, programs, birth} = user;
 
     return response.json({
       user: {
         id,
         name,
-        image,
+        image_url,
         birth,
         dependents,
         programs

@@ -7,10 +7,7 @@ module.exports = {
 
     const subscribes = await Subscribe.find({user: user_id});
   
-    return response.json({
-      subscribes
-    });
-  
+    return response.json(subscribes);
    
   },
 
