@@ -2,6 +2,7 @@ const Program = require('../models/Program');
 
 module.exports = {
   async index(request, response) {
+    
     const program = await Program.find();
 
     return response.json(program);
