@@ -3,7 +3,7 @@ const User = require('../models/User');
 module.exports = {
   async store(request, response)  {
     const {filename} = request.file;
-    const { name, birth, email, dependents, programs } = request.body;
+    const { name, birth, email, dependents, programs, timeline } = request.body;
 
     const user = await User.create({  
       image: filename,

@@ -13,6 +13,7 @@ module.exports = {
       user: {
         id,
         name,
+        email,
         image_url,
         birth,
         dependents,

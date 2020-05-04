@@ -27,12 +27,8 @@ routes.post('/programs', upload.single('image'), ProgramController.store);
 routes.get('/programs/', ProgramController.index);
 routes.get('/programs/:id', ProgramController.show);
 
-
-
 routes.post('/program/:program_id/:user_id', ProfileController.store);
 routes.get('/program/:user_id', ProfileController.index);
-
-
 
 routes.post('/medical_record', upload.single('image'), MedRecordController.store);
 routes.get('/medical_record/:user_id', MedRecordController.index);

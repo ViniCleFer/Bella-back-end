@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   image: String,
   birth: Date,
   dependents: [String],
-  programs: [String]
+  programs: [String],
 },{
     toJSON: {
       virtuals: true
